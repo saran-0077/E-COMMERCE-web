@@ -1,0 +1,22 @@
+name: React CI/CD Check
+
+on:
+  push:
+    branches: [ main ] # Main branch-la code push panna trigger aagum
+
+jobs:
+  build_check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3 # GitHub code-ah robotic server-ku edukkum
+      
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm install # Library ellaam install pannum
+
+      - name: Run Build
+        run: npm run build # App-ah production-ku ready panna check pannum
